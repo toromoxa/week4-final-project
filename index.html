@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies For You</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./app.js" defer></script>
+    <script src="https://kit.fontawesome.com/7d7bf2b2e9.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="row">
+                <figure class="nav__logo">
+                    <a href="#" class="click">
+                        <img src="./assets/popcorn-box-transparent-free-png-3451133062.png" class="popcorn-logo" alt="popcorn-bucket">
+                    </a>
+                    <i class="fa-solid fa-arrow-left"></i>&nbsp;
+                    <h1 class="nav__logo--title">Can't decide?<br>Pick at random!</h1>
+                </figure>
+                <ul class="nav__link--list">
+                    <li class="nav__list--item click">
+                        <a href="#" class="item__link">Home</a>
+                    </li>
+                    <li class="nav__list--item click">
+                        <a href="#" class="item__link">New Releases</a>
+                    </li>
+                    <li class="nav__list--item click login">
+                        <a href="#" class="item__link item__link--primary" onclick="toggleModal()">Sign In</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="search__container">
+                <div class="search__header">
+                    <h1 class="header__title">Movie night, made easy.</h1>
+                    <div class="search__input--wrapper">
+                        <input class="movie__search" type="text" placeholder="Start Here" id="movie__search" onkeyup="findMovies()">
+                            <button class="btn--search click">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </input>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="login__modal">
+        <div class="modal__input--container">
+            <i class="fa-solid fa-xmark click" onclick="toggleModal()"></i>
+            <div class="modal__input--row">
+                <h3 class="modal--title">Start Streaming!</h3>
+                <form id="login__form" action="">
+                    <div class="form__item">
+                        <label class="form__item--label">Email:</label>
+                        <input class="modal--input" type="email" placeholder="email"></input>
+                    </div>
+                    <div class="form__item">
+                        <label class="form__item--label">Password:</label>
+                        <input class="modal--input" type="password" placeholder="password"></input>
+                    </div>  
+                </form>
+                <button class="login--action" onclick="toggleModal()">GO!</button> 
+            </div>
+        </div>
+    </div>
+    <section class="movies">
+        <div class="movie__tile--container">
+            <div class="movie__tile--row">
+                <h1>Search Results:</h1>
+            </div>
+            <div class="movies__results">
+                
+            </div>
+        </div>
+    </section>
+</body>
+</html>

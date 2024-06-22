@@ -1,0 +1,416 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+US+Trad:wght@100..400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+IS:wght@100..400&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+* {
+    font-family: 'Raleway', sans-serif ;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.body {
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+.click {
+    transition: all 300ms ease;
+}
+
+.click:hover {
+    transform: scale(1.2);
+}
+
+.click:active {
+    transform: scale(0.8);
+}
+
+nav {
+    z-index: 1;
+}
+
+.movies {
+    z-index: 1;
+}
+
+/* NAVIGATION  */
+
+nav {
+    margin: 0 auto;
+    width: 100%;
+    height: 400px;
+    color: white;
+    background-image: url(./assets/movie-reel-bg-wp8021245-1202238909.jpg);
+    background-size: cover;
+    background-position-y: 30%;
+    position: relative;
+}
+
+.nav__logo {
+    display: flex;
+    align-items: center;
+}
+
+.fa-arrow-left {
+    color: gold;
+}
+
+.nav__logo--title {
+    font-size: small;
+    color: gold;
+}
+
+.popcorn-logo {
+    width: 65px;
+}
+
+.popcorn-logo:hover {
+    animation: animate-popcorn-bucket 650ms infinite ease-in-out;
+}
+
+@keyframes animate-popcorn-bucket {
+    0% {
+        transform: rotate(0);
+    }
+    25% {
+        transform: rotate(10deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(-10deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.nav__link--list {
+    display: flex;
+    list-style: none;
+}
+
+.nav__list--item {
+    margin: 0 16px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.login {
+    margin-left: 48px;
+}
+
+.item__link {
+    color: white;
+}
+
+.item__link--primary {
+    background-color: rgb(36, 169, 241);
+    padding: 8px 24px;
+    border-radius: 50px;
+    transition: all 300ms ease;
+}
+
+.item__link--primary:hover {
+    background-color: rgb(14, 77, 179);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row {
+    width: 100%;
+    max-width: 1240px;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btn__container {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.search__container {
+    margin-top: 36px;
+    width: 100%;
+}
+
+.search__header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header__title {
+    font-size: 48px;
+    font-family: "Playwrite US Trad", cursive;
+    margin-bottom: 24px;
+}
+
+.search__input--wrapper {
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    border-radius: 50px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.movie__search {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    font-size: 24px;
+    padding-left: 24px;
+    border: none;
+    background-color: white;
+}
+
+.movie__search:active {
+    outline: none;
+    border: none;
+    background-color: white;
+}
+
+.btn--search {
+    position: absolute;
+    right: 16px;
+    border: none;
+
+}
+
+.fa-magnifying-glass {
+   display: flex;
+   align-items: center;
+   color: gold;
+   background-color: white;
+   height: 100%;
+   font-size: 40px;
+   transition: all 300ms ease;
+}
+
+.fa-magnifying-glass:hover {
+    color: rgb(14, 77, 179);
+}
+
+/* MODAL */
+
+.login__modal {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 50%;
+height: 440px;
+max-width: 600px;
+visibility: hidden;
+border-radius: 20px;
+overflow: hidden;
+background-image: url(./assets/movie-curtains.jpg);
+background-position-y: -50px ;
+background-size: cover;
+background-repeat: center no-repeat;
+display: flex;
+align-items: center;
+z-index: -3;
+transition: visibility 300ms, z-index 300ms, box-shadow 300ms ease;
+}
+
+.modal--open .login__modal {
+    box-shadow: 0 20px 80px 0 rgb(0, 0, 0, 0.55);
+    visibility: visible;
+    z-index: 60;
+}
+
+.modal__input--container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.modal__input--row {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.modal--title {
+    color: gold;
+    margin-bottom: 32px;
+    font-size: 32px;
+    font-family: "Playwrite US Trad";
+}
+
+.login__form {
+    width: 100%;
+}
+
+.form__item {
+    display: flex;
+    
+    text-align: left;
+    margin: 24px;
+}
+
+.form__item--label {
+    color: gold;
+    padding-right: 16px;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.modal--input {
+    padding-left: 4px;
+    border-top: hidden;
+    border-left: hidden;
+    border-right: hidden;
+    border-width: 3px;
+    background-color: transparent;
+    width: 100%;
+    outline: none;
+    color: white;
+    font-size: 20px;
+}
+
+.modal--input:hover {
+    border-color: rgb(14, 77, 179);
+}
+
+.modal--input:active {
+    border-color: gold;   
+}
+
+.modal--input::placeholder {
+    color: gold;
+    font-size: 20px;
+    text-align: center;
+}
+
+.login--action {
+    position: absolute;
+    bottom: -30%;
+    padding: 8px 16px;
+    font-size: 24px;
+    background-color: gold;
+    color: rgb(14, 77, 179);
+    font-weight: 700;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.login--action:hover {
+    background-color: rgb(14, 77, 179);
+    color: gold;
+    transition: all 300ms ease;
+}
+
+.fa-xmark {
+    position: absolute;
+    font-size: 24px;
+    top: 12px;
+    right: 18px;
+    color: gold;
+}
+
+/* movies  */
+
+.movies {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.movie__tile--container {
+    width: 100%;
+}
+
+.movie__tile--row {
+    width: 100%;
+    padding: 24px 24px;
+}
+
+.movies__results {
+    margin: 12px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.movie {
+    margin: 16px;
+    width: calc(100% / 4);
+}
+
+.movie__tile {
+    width: 100%;
+    margin: 4px;
+    border: 1px solid rgb(24, 24, 24, .30);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 300ms ease;
+    text-align: center;
+   
+}
+
+.movie__tile:hover {
+    transform: scale(1.1);
+    box-shadow: 10px 20px rgb(195, 193, 193, 0.25);
+}
+
+.movie__img--box {
+    padding: 4px;
+}
+
+.movie__img {
+    width: 100%;
+}
+
+.horizontal__break {
+    width: 95%;
+    border: 1px solid rgb(24, 24, 24, 0.30);
+    margin: 2px 0px;
+}
+
+.movie__info--box { 
+    width: 100%;
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.movie__title {
+    font-size: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.rated {
+    font-size: 20px;
+    margin-bottom: 8px;
+}

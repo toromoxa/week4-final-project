@@ -24,7 +24,7 @@ const movieSearch = document.getElementById('movie__search')
 const moviesWrapperEl = document.querySelector('.movies__results'); 
 
 async function searchMovies(searchTerm) {    
-    const URL = `http://www.omdbapi.com/?s=${searchTerm}&page=1&apikey=c24e8ce7&`
+    const URL = `https://www.omdbapi.com/?s=${searchTerm}&page=1&apikey=c24e8ce7&`
     const res = await fetch(`${URL}`);
     const data = await res.json();
     const movieData = await data.Search

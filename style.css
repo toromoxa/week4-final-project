@@ -192,14 +192,14 @@ nav {
     position: absolute;
     right: 16px;
     border: none;
-
+    background-color: transparent;
 }
 
 .fa-magnifying-glass {
    display: flex;
    align-items: center;
    color: gold;
-   background-color: white;
+   background-color: transparent;
    height: 100%;
    font-size: 40px;
    transition: all 300ms ease;
@@ -434,7 +434,7 @@ transition: visibility 300ms, z-index 300ms, box-shadow 300ms ease;
 }
 
 .movies__loading .movies__loading--film {
-    display: block;
+    display: none;
 }
 
 .fa-film {

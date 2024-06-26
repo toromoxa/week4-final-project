@@ -23,33 +23,6 @@ function toggleModal() {
 const movieSearch = document.getElementById('movie__search')
 const moviesWrapperEl = document.querySelector('.movies__results'); 
 
-async function searchMovies(searchTerm) {    
-    const URL = `https://www.omdbapi.com/?s=${searchTerm}&page=1&apikey=c24e8ce7&`
-    const res = await fetch(`${URL}`);
-    const data = await res.json();
-    const movieData = await data.Search
-    const slicedMovieData = await movieData.slice(0, 6) 
-    
-    moviesWrapperEl.innerHTML = slicedMovieData.map((movie) => renderMovies(movie)).join("")
-}
-
-function findMovies() {
-    movieSearch.addEventListener("keypress", function(event) {
-        let searchTerm = (movieSearch.value)
-        if (event.key === "Enter") {
-            event.preventDefault();
-            console.log('enter was pressed')
-          return searchMovies(searchTerm);
-        }
-    });
-}
-
-function clickSearchBtn() {
-    let searchTerm = (movieSearch.value)
-    console.log('search was clicked')
-    return searchMovies(searchTerm)
-}
-
 function renderMovies(movie) {
     if (movie.Poster == "N/A")
         movie.Poster = "assets/404-error-not-found-page-lost-2327795402.png"
@@ -69,4 +42,48 @@ function renderMovies(movie) {
             </div>
         </div>
     </div>`
+}
+
+function filterMovies(event) {
+    const movies = event.target.value;
+    renderMovies(movies)
+}
+
+async function searchMovies(searchTerm) {    
+    const URL = `https://www.omdbapi.com/?s=${searchTerm}&page=1&apikey=c24e8ce7&`
+    const res = await fetch(`${URL}`);
+    const data = await res.json();
+    const movieData = await data.Search
+    const slicedMovieData = await movieData.slice(0, 6);
+    
+    const moviesHTML = slicedMovieData.map((movie) => renderMovies(movie)).join("");
+    
+    moviesWrapperEl.innerHTML = moviesHTML;
+}
+
+function findMovies() {
+    movieSearch.addEventListener("keypress", function(event) {
+        let searchTerm = (movieSearch.value)
+        if (event.key === "Enter") {
+            event.preventDefault();
+            console.log('enter was pressed')
+          return searchMovies(searchTerm);
+        }
+    });
+}
+
+function clickSearchBtn() {
+    let searchTerm = (movieSearch.value)
+    console.log('search was clicked')
+    return searchMovies(searchTerm)
+}
+
+if (filter === 'OLD_TO_NEW') {
+    movie.sort((a, b) => a.Year - b.Year)
+ }
+else if (filter === 'NEW_TO_OLD') {
+    movie.sort((a, b) => b.Year - a.Year)
+}
+else if (filter === "TITLE") {
+    movie.sort((a, b) => a.Title - b.Title)
 }

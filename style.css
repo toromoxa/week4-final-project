@@ -348,6 +348,8 @@ transition: visibility 300ms, z-index 300ms, box-shadow 300ms ease;
 .movie__tile--row {
     width: 100%;
     padding: 24px 24px;
+    display: flex;
+    justify-content: space-between;;
 }
 
 .movies__results {

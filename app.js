@@ -22,7 +22,7 @@ function toggleModal() {
 
 const movieSearch = document.getElementById('movie__search')
 const moviesWrapperEl = document.querySelector('.movies__results'); 
-let movieData = []
+let movieData = {}
 
 function renderMovies(movie) {
     if (movie.Poster == "N/A") {
@@ -47,8 +47,8 @@ function renderMovies(movie) {
 }
 
 function filterMovies(event) {
-    const movies = event.target.value;
-    sortMovies(movies)
+    sortMovies(event.target.value)
+    
 }
 
 function sortMovies(filter) {
@@ -67,8 +67,6 @@ function sortMovies(filter) {
 async function searchMovies(searchTerm) {    
     const res = await fetch(`https://www.omdbapi.com/?s=${searchTerm}&page=1&apikey=c24e8ce7&`);
     movieData = await res.json();
-    
-    
     const moviesHTML = movieData.Search.map((movie) => renderMovies(movie)).join("");
     
     moviesWrapperEl.innerHTML = moviesHTML;

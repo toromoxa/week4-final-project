@@ -48,10 +48,10 @@ function renderMovies(movie) {
 
 function filterMovies(event) {
     const movies = event.target.value;
-    renderMovies(movies)
+    sortMovies(movies)
 }
 
-function sortMovies (filter) {
+function sortMovies(filter) {
     if (filter === 'OLD_TO_NEW') {
         movieData.Search.sort((a, b) => a.Year - b.Year)
      }

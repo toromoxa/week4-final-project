@@ -53,23 +53,23 @@ function filterMovies(event) {
 
 function sortMovies (filter) {
     if (filter === 'OLD_TO_NEW') {
-        movie.sort((a, b) => a.Year - b.Year)
+        movieData.Search.sort((a, b) => a.Year - b.Year)
      }
     else if (filter === 'NEW_TO_OLD') {
-        movie.sort((a, b) => b.Year - a.Year)
+        movieData.Search.sort((a, b) => b.Year - a.Year)
     }
     else if (filter === "TITLE") {
-        movie.sort((a, b) => a.Title - b.Title)
+        movieData.Search.sort((a, b) => a.Title - b.Title)
     }
-    moviesWrapperEl.innerHTML = movieData.map((movie) => renderMovies(movie)).join("");
+    moviesWrapperEl.innerHTML = movieData.Search.map((movie) => renderMovies(movie)).join("");
 }
 
 async function searchMovies(searchTerm) {    
     const res = await fetch(`https://www.omdbapi.com/?s=${searchTerm}&page=1&apikey=c24e8ce7&`);
-    const data = await res.json();
-    movieData = await data.Search.slice(0, 6);
+    movieData = await res.json();
     
-    const moviesHTML = movieData.map((movie) => renderMovies(movie)).join("");
+    
+    const moviesHTML = movieData.Search.map((movie) => renderMovies(movie)).join("");
     
     moviesWrapperEl.innerHTML = moviesHTML;
 }

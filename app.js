@@ -22,10 +22,12 @@ function toggleModal() {
 
 const movieSearch = document.getElementById('movie__search')
 const moviesWrapperEl = document.querySelector('.movies__results'); 
+let movieData = []
 
 function renderMovies(movie) {
-    if (movie.Poster == "N/A")
+    if (movie.Poster == "N/A") {
         movie.Poster = "assets/404-error-not-found-page-lost-2327795402.png"
+    }
     return `<div class="movie">
         <div class="movie__tile">
             <div class="movie__img--box">
@@ -49,14 +51,25 @@ function filterMovies(event) {
     renderMovies(movies)
 }
 
+function sortMovies (filter) {
+    if (filter === 'OLD_TO_NEW') {
+        movie.sort((a, b) => a.Year - b.Year)
+     }
+    else if (filter === 'NEW_TO_OLD') {
+        movie.sort((a, b) => b.Year - a.Year)
+    }
+    else if (filter === "TITLE") {
+        movie.sort((a, b) => a.Title - b.Title)
+    }
+    moviesWrapperEl.innerHTML = movieData.map((movie) => renderMovies(movie)).join("");
+}
+
 async function searchMovies(searchTerm) {    
-    const URL = `https://www.omdbapi.com/?s=${searchTerm}&page=1&apikey=c24e8ce7&`
-    const res = await fetch(`${URL}`);
+    const res = await fetch(`https://www.omdbapi.com/?s=${searchTerm}&page=1&apikey=c24e8ce7&`);
     const data = await res.json();
-    const movieData = await data.Search
-    const slicedMovieData = await movieData.slice(0, 6);
+    movieData = await data.Search.slice(0, 6);
     
-    const moviesHTML = slicedMovieData.map((movie) => renderMovies(movie)).join("");
+    const moviesHTML = movieData.map((movie) => renderMovies(movie)).join("");
     
     moviesWrapperEl.innerHTML = moviesHTML;
 }
@@ -78,12 +91,3 @@ function clickSearchBtn() {
     return searchMovies(searchTerm)
 }
 
-if (filter === 'OLD_TO_NEW') {
-    movie.sort((a, b) => a.Year - b.Year)
- }
-else if (filter === 'NEW_TO_OLD') {
-    movie.sort((a, b) => b.Year - a.Year)
-}
-else if (filter === "TITLE") {
-    movie.sort((a, b) => a.Title - b.Title)
-}

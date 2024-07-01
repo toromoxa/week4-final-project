@@ -23,7 +23,6 @@ function toggleModal() {
 const movieSearch = document.getElementById('movie__search')
 const moviesWrapperEl = document.querySelector('.movies__results'); 
 let movieData = {}
-let movies;
 
 function renderMovies(movie) {
     if (movie.Poster == "N/A") {

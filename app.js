@@ -23,6 +23,7 @@ function toggleModal() {
 const movieSearch = document.getElementById('movie__search')
 const moviesWrapperEl = document.querySelector('.movies__results'); 
 let movieData = {}
+let movies;
 
 function renderMovies(movie) {
     if (movie.Poster == "N/A") {
@@ -48,18 +49,14 @@ function renderMovies(movie) {
 
 function filterMovies(event) {
     sortMovies(event.target.value)
-    
 }
 
-function sortMovies(filter) {
+async function sortMovies(filter) {
     if (filter === 'OLD_TO_NEW') {
         movieData.Search.sort((a, b) => a.Year - b.Year)
      }
     else if (filter === 'NEW_TO_OLD') {
         movieData.Search.sort((a, b) => b.Year - a.Year)
-    }
-    else if (filter === "TITLE") {
-        movieData.Search.sort((a, b) => a.Title - b.Title)
     }
     moviesWrapperEl.innerHTML = movieData.Search.map((movie) => renderMovies(movie)).join("");
 }
@@ -68,7 +65,7 @@ async function searchMovies(searchTerm) {
     const res = await fetch(`https://www.omdbapi.com/?s=${searchTerm}&page=1&apikey=c24e8ce7&`);
     movieData = await res.json();
     const moviesHTML = movieData.Search.map((movie) => renderMovies(movie)).join("");
-    
+
     moviesWrapperEl.innerHTML = moviesHTML;
 }
 
